@@ -7,10 +7,10 @@
 #       extension: .py
 #       format_name: light
 #       format_version: '1.5'
-#       jupytext_version: 1.5.0
+#       jupytext_version: 1.6.0
 #   kernelspec:
-#     display_name: Python 3
-#     language: python
+#     display_name: Python 3 (Spyder)
+#     language: python3
 #     name: python3
 # ---
 
@@ -44,7 +44,7 @@ import numpy
 import math
 from matplotlib import pyplot
 # отображение картинок в блокноте
-# # %matplotlib inline
+# %matplotlib inline
 from matplotlib import rcParams
 rcParams['font.family'] = 'serif'
 rcParams['font.size'] = 16
@@ -118,7 +118,7 @@ pyplot.axvline(x_end, (y_start - ymin) / (ymax -ymin),
                (y_end - ymin)/ (ymax -ymin),
 color='#CD2305', linewidth=2);
 
-# Определим силу взаимодействия первого пузыоька со вторым. Сила взаимодействия диполней может быть вычислена как
+# Определим силу взаимодействия первого пузырька со вторым. Сила взаимодействия диполей может быть вычислена как
 #
 # $$F = p_п\frac{\partial E_d}{\partial x}\cos\alpha,$$
 #
@@ -130,7 +130,7 @@ color='#CD2305', linewidth=2);
 
 E_d = numpy.sqrt(E_dx**2 + E_dy**2)
 
-# Для вычисления градиента поля воспользуемся библиотекой sympy. Нужно задать символы $x$ и $y$, записать выражение для компонент поля, а затем вычислить производную от модуля нпряженности поля.
+# Для вычисления градиента поля воспользуемся библиотекой sympy. Нужно задать символы $x$ и $y$, записать выражение для компонент поля, а затем вычислить производную от модуля напряженности поля.
 
 import sympy
 

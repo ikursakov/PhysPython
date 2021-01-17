@@ -7,10 +7,10 @@
 #       extension: .py
 #       format_name: light
 #       format_version: '1.5'
-#       jupytext_version: 1.5.0
+#       jupytext_version: 1.6.0
 #   kernelspec:
-#     display_name: Python 3
-#     language: python
+#     display_name: Python 3 (Spyder)
+#     language: python3
 #     name: python3
 # ---
 
@@ -29,7 +29,7 @@
 import numpy
 import sympy
 from matplotlib import pyplot
-# %matplotlib inline
+%matplotlib inline
 from matplotlib import rcParams
 rcParams['font.family'] = 'serif'
 rcParams['font.size'] = 16
@@ -83,7 +83,7 @@ def E_field(phi):
 from IPython.display import display,Latex
 Latex('$E_x = {0}, E_y= {1}$'.format(*E_field(phi)))
 
-# Теперь хорошо бы визуализировать линии поенциала и поля. Для этой цели воспользуемся функцией `lambdify`, которая превращает символьное уравнение SymPy в функцию. Нужно только указать, какие символы являются зависимыми, а какие – нет.
+# Теперь хорошо бы визуализировать линии потенциала и поля. Для этой цели воспользуемся функцией `lambdify`, которая превращает символьное уравнение SymPy в функцию. Нужно только указать, какие символы являются зависимыми, а какие – нет.
 
 potential_fun = sympy.lambdify((x,y),phi)
 field_fun = sympy.lambdify((x,y),E_field(phi))
@@ -141,5 +141,3 @@ pyplot.ylabel('y', fontsize=16)
 levels = [-2,-1,-0.5,-0.1,0,0.1,0.5,1,2]
 pyplot.contour(X,Y,potential_fun(X,Y),levels,colors='k',linestyles='solid')
 pyplot.streamplot(X,Y,*field_fun(X,Y));
-
-
