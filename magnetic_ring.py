@@ -163,7 +163,7 @@ def make_grid():
     # каждый размерностью (grid_Ny, grid_Nx, grid_Nz) (sic!)
     X, Y, Z = np.mgrid[x_start:x_end:grid_Nx*1j,
                        y_start:y_end:grid_Ny*1j,
-                       z_start:y_end:grid_Nz*1j]
+                       z_start:z_end:grid_Nz*1j]
 
     # Объединённый 4D массив координат: [ {x0,y0,z0}, {x1,y1,z1}, ... ]
     return np.stack( (X, Y, Z), axis=3 )
@@ -284,7 +284,7 @@ def Bz_theor(I, z):
 # Для выполнения сравнения с теоретическим решением, извлечём из численного решения срезы данных вдоль линии $x=0, y=0$. Этой линии соответствуют центральные индексы сетки `i = grid_Nx//2` и `j = grid_Ny//2` (используем целочисленное деление). Тогда в рамках синтаксиса `NumPy` и согласно порядка индексации наших 4х-мерных массивов, данные извлекаются как `[i,j,:, c]`.
 
 # +
-plt.figure(figsize=(10,5))
+plt.figure()
 plt.grid(True)
 plt.xlabel('z', fontsize=16)
 plt.ylabel('$B_z$', fontsize=16)
