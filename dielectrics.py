@@ -7,10 +7,10 @@
 #       extension: .py
 #       format_name: light
 #       format_version: '1.5'
-#       jupytext_version: 1.6.0
+#       jupytext_version: 1.5.0
 #   kernelspec:
-#     display_name: Python 3 (Spyder)
-#     language: python3
+#     display_name: Python 3
+#     language: python
 #     name: python3
 # ---
 
@@ -44,7 +44,7 @@ import numpy
 import math
 from matplotlib import pyplot
 # отображение картинок в блокноте
-# %matplotlib inline
+# # %matplotlib inline
 from matplotlib import rcParams
 rcParams['font.family'] = 'serif'
 rcParams['font.size'] = 16
@@ -120,13 +120,17 @@ color='#CD2305', linewidth=2);
 
 # Определим силу взаимодействия первого пузырька со вторым. Сила взаимодействия диполей может быть вычислена как
 #
-# $$F = p_п\frac{\partial E_d}{\partial x}\cos\alpha,$$
+# $$F = \left(p_п \nabla\right)E_d = \frac{(\varepsilon -1)a^3Ud}{3} \frac{\partial E_d}{\partial x}$$
 #
-# где $\alpha$ – угол между направлением поля диполя от первого пузырька и дипольным моментом второго пузырька, 
+#
+
+# $E_d$ – модуль вектора напряженности поля, созданного первым пузырьком: 
 #
 # $$
-# \cos \alpha = \frac{(\vec{E_d}\vec{p_п})}{E_d p_п}
+# E_d = \sqrt{E_{dx}^2 + E_{dy}^2}
 # $$
+#
+# ВЫчислим его:
 
 E_d = numpy.sqrt(E_dx**2 + E_dy**2)
 
@@ -161,12 +165,13 @@ dE_dx_dimless = sympy.lambdify((x_,y_),grad_E)
 
 def interaction_force(x_bubble,y_bubble):
     p_bubble = (eps - 1)*a**3*U*d/3
-    E_dx , E_dy = get_field_components(a,0,0,x_bubble,y_bubble)
-    cos_a = E_dx/((E_dx**2 + E_dy**2)**0.5)
+    
     dE_dx = (eps - 1)*a**3*U*d *dE_dx_dimless(x_bubble,x_bubble)
-    return p_bubble*dE_dx*cos_a
+    return p_bubble*dE_dx
 
 
 # Предположим, что второй пузырек находится в точке с координатами $(1,2)$. Тогда на него будет действовать сила:
 
 interaction_force(1,2)
+
+
