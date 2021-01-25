@@ -7,10 +7,10 @@
 #       extension: .py
 #       format_name: light
 #       format_version: '1.5'
-#       jupytext_version: 1.5.0
+#       jupytext_version: 1.6.0
 #   kernelspec:
-#     display_name: Python 3
-#     language: python
+#     display_name: Python 3 (Spyder)
+#     language: python3
 #     name: python3
 # ---
 
@@ -43,7 +43,7 @@
 import numpy as np
 
 # встраивать графики внутрь блокнота (вызывать ПЕРЕД импортом библиотеки)
-# %matplotlib inline
+%matplotlib inline
 import matplotlib.pyplot as plt
 # -
 
@@ -214,7 +214,7 @@ def Bz_theor(I, x):
 plt.figure(figsize=(10,5))
 plt.grid(True)
 plt.xlabel('x', fontsize=16)
-plt.ylabel(r'$B_z$', fontsize=16)
+plt.ylabel('$B_z$', fontsize=16)
 
 # Координаты узлов сетки и значение магнитной индукции вдоль направления (x,y=0,z=0)
 X  = grid_XYZ[grid_Nx//2:, 0, grid_Nz//2, 0]
